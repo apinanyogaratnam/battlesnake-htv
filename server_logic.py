@@ -89,19 +89,20 @@ def choose_move(data: dict) -> str:
     snakes = data["board"]["snakes"]
 
     for snake in snakes:
-        for body_part in snake:
-            if "right" in possible_moves:
-                if my_head["x"] + 1 == body_part["x"]: 
-                    possible_moves.remove("right")
-            if "left" in possible_moves:
-                if my_head["x"] - 1 == body_part["x"]: 
-                    possible_moves.remove("left")
-            if "up" in possible_moves: 
-                if my_head["y"] + 1 == body_part["y"]: 
-                    possible_moves.remove("up")
-            if "down" in possible_moves: 
-                if my_head["y"] - 1 == body_part["y"]: 
-                    possible_moves.remove("down")
+        if snake["id"] != data["you"]["id"]:
+            for body_part in snake["body"]:
+                if "right" in possible_moves:
+                    if my_head["x"] + 1 == body_part["x"] and my_head["y"] == body_part["y"]: 
+                        possible_moves.remove("right")
+                if "left" in possible_moves:
+                    if my_head["x"] - 1 == body_part["x"] and my_head["y"] == body_part["y"]: 
+                        possible_moves.remove("left")
+                if "up" in possible_moves: 
+                    if my_head["y"] + 1 == body_part["y"] and my_head["x"] == body_part["x"]: 
+                        possible_moves.remove("up")
+                if "down" in possible_moves: 
+                    if my_head["y"] - 1 == body_part["y"] and my_head["x"] == body_part["x"]: 
+                        possible_moves.remove("down")
     # TODO: Using information from 'data', make your Battlesnake move towards a piece of food on the board
 
     # Choose a random direction from the remaining possible_moves to move in, and then return that move
