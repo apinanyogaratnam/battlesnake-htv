@@ -73,34 +73,17 @@ def choose_move(data: dict) -> str:
 
     for item in my_body:
         if "right" in possible_moves:
-            if my_head["x"] + 1 == item["x"]: 
+            if my_head["x"] + 1 == item["x"] and my_head["y"] == item["y"]: 
                 possible_moves.remove("right")
         if "left" in possible_moves:
-            if my_head["x"] - 1 == item["x"]: 
+            if my_head["x"] - 1 == item["x"] and my_head["y"] == item["y"]: 
                 possible_moves.remove("left")
         if "up" in possible_moves: 
-            if my_head["y"] + 1 == item["y"]: 
+            if my_head["y"] + 1 == item["y"] and my_head["x"] == item["x"]: 
                 possible_moves.remove("up")
         if "down" in possible_moves: 
-            if my_head["y"] - 1 == item["y"]: 
+            if my_head["y"] - 1 == item["y"] and my_head["x"] == item["x"]: 
                 possible_moves.remove("down")
-
-        # if "right" in possible_moves:
-        #     if my_head["x"] + 1 != item["x"]: 
-        #         possible_moves = ["right"]
-        #         break
-        # if "left" in possible_moves:
-        #     if my_head["x"] - 1 != item["x"]: 
-        #         possible_moves = ["left"]
-        #         break
-        # if "up" in possible_moves: 
-        #     if my_head["y"] + 1 != item["y"]: 
-        #         possible_moves = ["up"]
-        #         break
-        # if "down" in possible_moves: 
-        #     if my_head["y"] - 1 != item["y"]: 
-        #         possible_moves = ["down"]
-        #         break
 
     # TODO: Using information from 'data', don't let your Battlesnake pick a move that would collide with another Battlesnake
 
