@@ -65,9 +65,9 @@ def choose_move(data: dict) -> str:
     board_width = data['board']['width']
 
     if my_head["x"] + 1 == board_width: possible_moves.remove("right")
-    if my_head["x"] - 1 == board_width: possible_moves.remove("left")
+    if my_head["x"] - 1 == 0: possible_moves.remove("left")
     if my_head["y"] + 1 == board_height: possible_moves.remove("up")
-    if my_head["y"] - 1 == board_height: possible_moves.remove("down")
+    if my_head["y"] - 1 == 0: possible_moves.remove("down")
 
     # TODO Using information from 'data', don't let your Battlesnake pick a move that would hit its own body
 
