@@ -104,6 +104,20 @@ def choose_move(data: dict) -> str:
                     if my_head["y"] - 1 == body_part["y"] and my_head["x"] == body_part["x"]: 
                         possible_moves.remove("down")
     # TODO: Using information from 'data', make your Battlesnake move towards a piece of food on the board
+    foods = data["board"]["food"]
+    for food in foods:
+        if "right" in possible_moves:
+            if my_head["x"] + 1 == food["x"] and my_head["y"] == food["y"]: 
+                possible_moves = ["right"]
+        if "left" in possible_moves:
+            if my_head["x"] - 1 == food["x"] and my_head["y"] == food["y"]: 
+                possible_moves = ["left"]
+        if "up" in possible_moves: 
+            if my_head["y"] + 1 == food["y"] and my_head["x"] == food["x"]: 
+                possible_moves = ["up"]
+        if "down" in possible_moves: 
+            if my_head["y"] - 1 == food["y"] and my_head["x"] == food["x"]: 
+                possible_moves = ["down"]
 
     # Choose a random direction from the remaining possible_moves to move in, and then return that move
     move = random.choice(possible_moves)
